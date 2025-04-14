@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: react-app-container
-          image: game-2048:latest  # Use your actual Docker image name and tag
+          image: 286668306280.dkr.ecr.us-east-1.amazonaws.com/musthafa:latest  # Use your actual Docker image name and tag
           ports:
             - containerPort: 35000  # The port your React app is listening on
 
