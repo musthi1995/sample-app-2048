@@ -1,0 +1,21 @@
+replicaCount: 3
+
+image:
+  repository: 286668306280.dkr.ecr.us-east-1.amazonaws.com/musthafa
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
+
+ingress:
+  enabled: true
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+  path: /
+  pathType: Prefix
+  host: ""  # optional
