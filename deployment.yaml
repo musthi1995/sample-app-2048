@@ -16,7 +16,7 @@ spec:
         - name: react-app-container
           image: 286668306280.dkr.ecr.us-east-1.amazonaws.com/musthafa:latest  # Use your actual Docker image name and tag
           ports:
-            - containerPort: 35000  # The port your React app is listening on
+            - containerPort: 3000  # The port your React app is listening on
 
 ---
 apiVersion: v1
@@ -28,7 +28,7 @@ spec:
     app: react-app
   ports:
     - protocol: TCP
-      port: 80  # The port exposed by the service within the cluster
-      targetPort: 35000  # The port your React app is listening on inside the pod
+      port: 80   # The port exposed by the service within the cluster
+      targetPort: 3000  # The port your React app is listening on inside the pod
   type: NodePort
 
