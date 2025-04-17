@@ -90,6 +90,14 @@ pipeline {
             }
         }
 
+        stage('TRIVY Scan') {
+            steps {
+                script {
+                    sh 'trivy image $IMAGE_NAME:$IMAGE_TAG > trivy.json'
+               }
+           }
+        }
+
         stage('Push to AWS ECR') {
             steps {
                 script {
@@ -97,12 +105,6 @@ pipeline {
                     sh 'docker tag $IMAGE_NAME:$IMAGE_TAG $AWS_ECR_REPO:$IMAGE_TAG'
                     sh 'docker push $AWS_ECR_REPO:$IMAGE_TAG'
                 }
-            }
-        }
-
-        stage('TRIVY') {
-            steps {
-                sh 'trivy image $AWS_ECR_REPO:$IMAGE_TAG > trivy.json'
             }
         }
 
